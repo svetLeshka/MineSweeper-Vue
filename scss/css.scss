@@ -1,0 +1,411 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Dancing+Script:wght@600&family=Kanit:wght@900&display=swap');
+body {
+	margin: 0 auto;
+	width: 660px;
+	background-image: url('../images/bg.jpg');
+	background-repeat: repeat;
+}
+
+#body {
+	position: relative;
+	overflow: hidden;
+}
+
+.header {
+	font-family: 'Abril Fatface', cursive;
+	margin-top: 10px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	font-size: 17px;
+	position: relative;
+	> * {
+		background-color: #303841;
+		color: yellow;
+		outline: 2px solid black;
+	}
+	&__list {
+		width: 20%;
+		&:hover {
+			background-color: #303030;
+		}
+	}
+
+	&__text {
+		width: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		letter-spacing: 8px;
+		text-transform: uppercase;
+	}
+
+	&__count-mine {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		width: 15%;
+		div {
+			padding: 10px 15px;
+		}
+		img {
+			height: 35px;
+		}
+	}
+
+	&__count-time {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		width: 15%;
+		div {
+			padding: 10px 15px;
+		}
+		img {
+			height: 35px;
+		}
+	}
+}
+
+#selected {
+	padding: 10px 15px;
+	cursor: pointer;
+	position: relative;
+}
+
+.modes {
+	width: 20%;
+	margin: 0;
+	padding: 0;
+	top: calc(100% + 1px);
+	position: absolute;
+	background-color: #303841;
+	&__item {
+		padding: 10px 15px;
+		width: 100%;
+		box-sizing: border-box;
+		cursor: pointer;
+		border-right: 2px solid black;
+		border-bottom: 2px solid black;
+		&:hover {
+			background-color: #303030;
+		}
+	}
+	&__hide {
+		opacity: 0;
+		visibility: hidden;
+	}
+	&__show {
+		z-index: 100;
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+main {
+	margin: 0 auto;
+	outline: 2px solid black;
+	margin-top: 2px;
+}
+
+table {
+	width: 100%;
+	background-color: #E7EAED;
+	table-layout: fixed;
+}
+
+@keyframes appear {
+	from {
+		opacity: 0;
+		transform: scale(0);	
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.cellNeutral {
+	background-color: green;
+	cursor: pointer;
+	&:hover {
+		background-color: blue;
+	}
+}
+
+.cellEmpty {
+	transition: background-color 0.1s ease-in-out;
+	background-color: #E7EAED;
+	cursor: default;
+}
+
+.cellNeutralWithFlag {
+	background-color: green;
+	cursor: default;
+	position: relative;
+	&::after {
+		animation: appear 0.2s forwards;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		content: '';
+		background-image: url(../images/flag.png);
+		background-size: cover;
+	}
+}
+
+.cellMine {
+	background-color: #E7EAED;
+	cursor: default;
+	position: relative;
+	transition: all 0.5s ease-in-out;
+	&::after {
+		animation: appear 0.2s forwards;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		content: '';
+		background-image: url(../images/mine.png);
+		background-size: cover;
+	}
+}
+
+.cellMineClick {
+	cursor: default;
+	position: relative;
+	background-color: red;
+	transition: all 0.5s ease-in-out;
+	&::after {
+		animation: appear 0.2s forwards;
+		width: calc(100% - 2px);
+		height: calc(100% - 2px);
+		position: absolute;
+		top: 1px;
+		left: 1px;
+		content: '';
+		background-image: url(../images/mine.png);
+		background-size: cover;
+	}
+}
+
+.cellCorrect {
+	cursor: default;
+	position: relative;
+	background-color: #E7EAED;
+	transition: all 0.5s ease-in-out;
+
+	&::after {
+		animation: appear 0.2s forwards;
+		width: 100%;;
+		height: 100%;;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		content: '';
+		background-image: url(../images/correct.png);
+		background-size: cover;
+	}
+}
+
+#field tr td {
+	font-family: 'Kanit', sans-serif;
+	text-align: center;
+	font-weight: 900;
+	font-size: 20px;
+	user-select: none;
+}
+
+.n1 {
+	color: rgb(0, 255, 64);
+}
+
+.n2 {
+	color: rgb(0, 128, 192);
+}
+
+.n3 {
+	color: rgb(255, 0, 0);
+}
+
+.n4 {
+	color: rgb(255, 128, 0);
+}
+
+.n5 {
+	color: rgb(128, 0, 0);
+}
+
+.n6 {
+	color: rgb(128, 0, 128);
+}
+
+.n7 {
+	color: rgb(64, 0, 64);
+}
+
+.n8 {
+	color: rgb(0, 0, 0);
+}
+
+.select {
+	position: relative;
+	cursor: pointer;
+	padding: 10px 15px;
+	outline: 2px solid black;
+	background-color: #303841;
+}
+
+.select:hover {
+	background-color: #303030;
+}
+
+#selected::after {
+	content: '▼';
+	color: brown;
+	position: absolute;
+	right: 5px;
+}
+
+@keyframes show-board {
+	from {
+		opacity: 0;
+		visibility: hidden;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+@keyframes hide-board {
+	from {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	to {
+		transform: translateY(300%);
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
+.minesweep-footer {
+	font-family: 'Dancing Script', cursive;
+	font-size: 40px;
+	color: yellow;
+	cursor: default;
+	display: flex;
+	align-items: center;
+	position: absolute;
+	transition: background-color 0.5s ease;
+	background-color: rgba(0, 0, 0, 0);
+	&__wrapper {
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		flex-direction: column;
+		padding: 40px;
+		user-select: none;
+		
+		outline-offset: -10px;
+		outline: 10px double white;
+		border-radius: 30px;
+	}
+	&__show {
+		transition: background-color 0.5s ease 1s;
+		transform: translateY(0);
+		background-color: rgba(0, 0, 0, 0.4);
+	}
+	&__already-hide {
+		transform: translateY(100%);
+	}
+	&__already-show {
+		transform: translateY(0);
+		background-color: rgba(0, 0, 0, 0.4);
+	}
+}
+
+.wrapper {
+	margin: 0 10px;
+	&__message {
+		text-align: center;
+		user-select: none;
+		text-transform: uppercase;
+	}
+	&__show {
+		animation: show-board 1s ease 0.5s 1 forwards;
+	}
+
+	&__hide {
+		animation: hide-board 0.5s ease 0s 1 forwards;
+	}
+
+	&__win {
+		background-color: lightskyblue;
+	}
+
+	&__lose {
+		background-color: rgb(240, 62, 70);
+	}
+
+	&__already-hide {
+		transform: translateY(300%);
+	}
+
+	&__already-show {
+		transform: translateY(0);
+	}
+}
+
+.stat {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	* {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	&__time {
+		&::before {
+			content: '';
+			background-image: url('../images/timer.png');
+			width: 50px;
+			height: 50px;
+			position: relative;
+			background-size: cover;
+			left: -20px;
+		}
+	}
+
+	&__mine {
+		&::before {
+			content: '';
+			background-image: url('../images/mine.png');
+			width: 50px;
+			height: 50px;
+			position: relative;
+			background-size: cover;
+			left: -20px;
+		}
+	}
+
+	&__image {
+		display: block;
+		padding: 20px;
+		background-color: white;
+		border-radius: 30px;
+		&:hover {
+			background-color: lightseagreen;
+			cursor: pointer;
+		}
+	}
+}
